@@ -7,12 +7,12 @@ NAME= fractol
 
 SRCS= fractol.c
 
-OBJ= $(SRCS: .c=.o)
+OBJ= $(SRCS:.c=.o)
 
-all= $(NAME)
+all: $(NAME)
 
-#%.o:%.c
-#	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -I /usr/local/include -L /usr/local/lib -lmlx -framework AppKit -framework OpenGl -o $(NAME)

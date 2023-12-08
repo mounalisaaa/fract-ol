@@ -34,10 +34,22 @@ void plan (double *a, double *b, t_data *img, int *i, int *j)
 	}
 	return (my_pixel_put(img, *i, *j, 0x00000000));
 }
-int main(void)
+int	ft_strcmp(char *str1, char *str2)
 {
+	int			i;
+
+	i = 0;
+	while (str1[i] && str2[i] && str1[i] == str2[i])
+		i++;
+	return (str1[i] - str2[i]);
+}
+
+int main(int ac, char **av)
+{
+	if (!(ac == 2 && (ft_strcmp("Mandelbrot", av[1]) == 0)))
+		return (0);
 	t_data img;
-	int i = 0;
+	int i;
 	int j;
 	double a = 0;
 	double b = 0;
@@ -52,7 +64,7 @@ int main(void)
     mlx_win = mlx_new_window(mlx, 800, 800, "FRACTAL");
     img.img = mlx_new_image(mlx, 800, 800);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for (; i < 800; i++)
+	for (i = 0; i < 800; i++)
 	{
 		for (j = 0; j < 800; j++)
 		{
