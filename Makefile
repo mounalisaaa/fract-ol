@@ -1,11 +1,11 @@
 CC= cc
 
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -O3 -fsanitize=address
 
 
 NAME= fractol
 
-SRCS= fractol.c
+SRCS= fractol.c color.c
 
 OBJ= $(SRCS:.c=.o)
 
