@@ -41,5 +41,5 @@ int get_color(int k);
 //helpers.c
 int	ft_strcmp(char *str1, char *str2);
 void my_pixel_put(t_data *data, int x, int y, int color);
-
+double ft_atof(char *str);
 #endif

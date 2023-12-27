@@ -4,13 +4,12 @@ int get_color(int it)
 {
     int colors[6];
 
-    colors[] = {
-        0x0b232a,  // (11, 35, 42)
-        0x0f3642,  // (15, 54, 66)
-        0x106575,  // (16, 101, 117)
-        0x4babb1,  // (75, 171, 177)
-        0xa2d5dd   // (162, 213, 221)
-    };
+    colors[0] = 0x0b232a;
+    colors[1] = 0x0f3642;
+    colors[2] = 0x106575;
+    colors[3] = 0x4babb1;
+    colors[4] = 0xa2d5dd;
+    colors[5] = 0;
 
     // Determine the color based on the iteration count
     int index = it % (sizeof(colors) / sizeof(colors[0]));

@@ -5,7 +5,7 @@ CFLAGS= -Wall -Wextra -Werror -O3 -fsanitize=address
 
 NAME= fractol
 
-SRCS= fractol.c color.c
+SRCS= fractol.c color.c atof.c helpers.c
 
 OBJ= $(SRCS:.c=.o)
 
