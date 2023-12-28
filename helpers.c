@@ -42,9 +42,8 @@ void	mouve(int button, t_args *args)
 {
 	double	move;
 
-	move = 1;
-	if (args->var)
-		move /= args->var;
+	move = args->var;
+	printf("move: %f\n", move);
 	if (button == 124)
 	{
 		args->min_x += move;
@@ -69,7 +68,7 @@ void	mouve(int button, t_args *args)
 
 void	apply_zoom(int button, double a, double b, t_args *args)
 {
-	if (button == 5)
+	if (button == 5 && args->flag < 150)
 	{
 		// zoom in
 		args->min_x = a + (args->min_x - a) / 1.25;
@@ -77,7 +76,7 @@ void	apply_zoom(int button, double a, double b, t_args *args)
 		args->max_x = a + (args->max_x - a) / 1.25;
 		args->max_y = b + (args->max_y - b) / 1.25;
 		args->flag++;
-		args->var = args->flag * 1.25;
+		args->var /= 1.25;
 	}
 	if (button == 4)
 	{
@@ -86,6 +85,6 @@ void	apply_zoom(int button, double a, double b, t_args *args)
 		args->max_x = a + (args->max_x - a) * 1.25;
 		args->max_y = b + (args->max_y - b) * 1.25;
 		args->flag--;
-		args->var = args->flag * 1.25;
+		args->var *= 1.25;
 	}
 }
