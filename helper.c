@@ -11,23 +11,24 @@
 /* ************************************************************************** */
 #include "fractol.h"
 
-int	get_color(int it)
-{
-	double	x;
-	int		red;
-	int		blue;
-	int		green;
 
-	if (it == 100)
-		return (0);
-	else
-	{
-		x = (double)it / 100;
-		red = (int)(12* (1 - x) * x * x * x * 255);
-		green = (int)(8 * (1 - x) * (1 - x) * x * x * 255);
-		blue = (int)(10 * (1 - x) * (1 - x) * (1 - x) * x * 255);
-	}
-	return ((red << 16) + (green << 8) + blue);
+int    get_color(int it)
+{
+    double        x;
+    int            red;
+    int            blue;
+    int            green;
+
+    if (it == 100)
+        return (0);
+    else
+    {
+        x = (double)it / 100;
+        red = (int)(9 * (1 - x) * x * x * x * 255);
+        green = (int)(15 * (1 - x) * (1 - x) * x * x * 255);
+        blue = (int)(8.5 * (1 - x) * (1 - x) * (1 - x) * x * 255);
+    }
+    return ((red << 16) + (green << 8) + blue);
 }
 
 void	invalid(void)
@@ -37,6 +38,7 @@ void	invalid(void)
 	printf("Valid parameter:\n");
 	printf("  Mandelbrot	Display the Mandelbrot fractal\n");
 	printf("  Ship		Display the Burning Ship fractal\n");
+    invalid_julia();
 	exit(1);
 }
 

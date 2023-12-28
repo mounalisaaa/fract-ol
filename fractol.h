@@ -56,7 +56,7 @@ int		close(void *data);
 void	apply_zoom(int button, double a, double b, t_args *args);
 void	mouve(int button, t_args *args);
 void invalid();
-void invalid_Julia();
+void invalid_julia();
 int param(int ac, char **av, t_args *data);
 
 
