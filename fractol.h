@@ -6,7 +6,7 @@
 /*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 19:55:28 by melyaaco          #+#    #+#             */
-/*   Updated: 2023/12/28 16:17:28 by melyaaco         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:28:16 by melyaaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef struct s_data
 {
@@ -52,13 +53,12 @@ int		get_color(int k);
 int		ft_strcmp(char *str1, char *str2);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 double	ft_atof(char *str);
-int		close(void *data);
+int		ft_close(void *data);
 void	apply_zoom(int button, double a, double b, t_args *args);
 void	mouve(int button, t_args *args);
-void invalid();
-void invalid_julia();
-int param(int ac, char **av, t_args *data);
-
+void	invalid(void);
+void	invalid_julia(void);
+int		param(int ac, char **av, t_args *data);
 
 //set
 void	plan(double a, double b, t_args *args);

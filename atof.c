@@ -1,39 +1,28 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atof.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/29 14:18:53 by melyaaco          #+#    #+#             */
+/*   Updated: 2023/12/29 14:26:00 by melyaaco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "fractol.h"
-int power_of(char *str)
-{
-	int i;
-	int j;
 
-	i = 0;
-	j = 0;
-	while(str[i])
-		i++;
-	j = i - 1;
-	while(i - 1 > 0)
-	{
-		if (str[i] == '.')
-			return (j - i);
-		i--;
-	}
-	return (0);
-}
-
-int is_space(char c)
+int	is_space(char c)
 {
 	return (c == ' ' || c == '\t');
 }
 
-double ft_atof(char *str)
+double	ft_atof(char *str)
 {
-	int i;
-	double res;
-	int flag;
-	int sign ;
+	int		i;
+	double	res;
+	int		sign;
+	double	j;
 
-	flag = 0;
 	i = 0;
 	res = 0;
 	while (is_space(str[i]))
@@ -45,28 +34,15 @@ double ft_atof(char *str)
 			sign *= -1;
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.')
+	while ((str[i] >= '0' && str[i] <= '9'))
+		res = (res * 10) + str[i++] - '0';
+	j = 10;
+	while (str[i] == '.' || (str[i] >= '0' && str[i] <= '9'))
 	{
 		if (str[i] == '.')
-		{
-			if (flag)
-			{
-				//invalid use
-				return (0);
-			}
 			i++;
-			flag = 1;
-		}
-
-		res = (res * 10 ) + str[i++] - '0';
+		res = res + ((str[i++] - '0') / j);
+		j *= 10;
 	}
-	if (flag)
-		res = res / pow(10.0, (double)power_of(str));
-	return (res  * sign );
+	return (res * sign);
 }
-
-// int main ()
-// {
-//     double i = 0.8;
-//     printf("%f\n", i);
-// }

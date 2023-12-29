@@ -6,7 +6,7 @@
 /*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 19:56:47 by melyaaco          #+#    #+#             */
-/*   Updated: 2023/12/27 21:03:55 by melyaaco         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:29:52 by melyaaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ void	my_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	close(void *data)
+int	ft_close(void *data)
 {
 	(void)data;
 	exit(1);
-	printf("closed");
 	return (0);
 }
 
@@ -43,7 +42,6 @@ void	mouve(int button, t_args *args)
 	double	move;
 
 	move = args->var;
-	printf("move: %f\n", move);
 	if (button == 124)
 	{
 		args->min_x += move;
@@ -70,7 +68,6 @@ void	apply_zoom(int button, double a, double b, t_args *args)
 {
 	if (button == 5 && args->flag < 150)
 	{
-		// zoom in
 		args->min_x = a + (args->min_x - a) / 1.25;
 		args->min_y = b + (args->min_y - b) / 1.25;
 		args->max_x = a + (args->max_x - a) / 1.25;

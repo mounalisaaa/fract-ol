@@ -6,7 +6,7 @@
 /*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 20:45:31 by melyaaco          #+#    #+#             */
-/*   Updated: 2023/12/28 17:04:47 by melyaaco         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:29:24 by melyaaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	zoomm(int button, int x, int y, t_args *args)
 		iterating(args);
 		mlx_put_image_to_window(args->mlx, args->mlx_win, args->img->img, 1, 1);
 	}
-	printf("%d\n", button);
 	return (0);
 }
 
@@ -33,11 +32,9 @@ int	key(int button, t_args *args)
 {
 	if (button == 53)
 		exit(1);
-	/* mlx_destroy_window(vars.mlx, vars.mlx_win); free(vars.mlx);*/
 	mouve(button, args);
 	if (button == 124 || button == 123 || button == 126 || button == 125)
 	{
-		printf("%f %f %f %f\n", args->min_x, args->max_x, args->min_y, args->max_y);
 		iterating(args);
 		mlx_put_image_to_window(args->mlx, args->mlx_win,
 			args->img->img, 1, 1);
@@ -92,7 +89,7 @@ int	main(int ac, char **av)
 	mlx_put_image_to_window(data.mlx, data.mlx_win, data.img->img, 1, 1);
 	mlx_key_hook(data.mlx_win, key, &data);
 	mlx_mouse_hook(data.mlx_win, zoomm, &data);
-	mlx_hook(data.mlx_win, 17, 0, close, NULL);
+	mlx_hook(data.mlx_win, 17, 0, ft_close, NULL);
 	mlx_loop(data.mlx);
 	return (0);
 }
