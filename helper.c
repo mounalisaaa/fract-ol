@@ -6,7 +6,7 @@
 /*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 19:43:42 by melyaaco          #+#    #+#             */
-/*   Updated: 2023/12/29 14:18:40 by melyaaco         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:26:23 by melyaaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
@@ -46,7 +46,7 @@ void	invalid(void)
 	ft_putstr("Valid parameter:\n");
 	ft_putstr("  Mandelbrot	Display the Mandelbrot fractal\n");
 	ft_putstr("  Ship		Display the Burning Ship fractal\n");
-	invalid_julia(void);
+	invalid_julia();
 	exit(1);
 }
 
@@ -61,29 +61,24 @@ void	invalid_julia(void)
 	exit(1);
 }
 
-int	param(int ac, char **av, t_args *data)
+void	param(int ac, char **av, t_args *data)
 {
-	if (ac == 2 || ac == 1)
+	int	flag;
+
+	if (ac == 2 && ft_strcmp("Mandelbrot", av[1]) == 0)
+		data->set = 1;
+	else if (ac == 2 && ft_strcmp("Ship", av[1]) == 0)
+		data->set = 3;
+	else if (ac == 4 && ft_strcmp("Julia", av[1]) == 0)
 	{
-		if (ac == 2 && ft_strcmp("Mandelbrot", av[1]) == 0)
-			data->set = 1;
-		else if (ac == 2 && ft_strcmp("Ship", av[1]) == 0)
-			data->set = 3;
-		else
+		data->set = 2;
+		data->a = ft_atof(av[2], &flag);
+		if (flag)
+			invalid();
+		data->b = ft_atof(av[3], &flag);
+		if (flag)
 			invalid();
 	}
-	else if (ac >= 4 || ac == 3)
-	{
-		if (ac == 4 && ft_strcmp("Julia", av[1]) == 0)
-		{
-			data->set = 2;
-			data->a = ft_atof(av[2]);
-			data->b = ft_atof(av[3]);
-		}
-		else
-			invalid_julia();
-	}
 	else
-		return (0);
-	return (1);
+		invalid();
 }

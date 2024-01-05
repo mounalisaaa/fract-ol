@@ -6,7 +6,7 @@
 /*   By: melyaaco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 19:55:28 by melyaaco          #+#    #+#             */
-/*   Updated: 2023/12/29 14:28:16 by melyaaco         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:26:11 by melyaaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ int		get_color(int k);
 //helpers.c
 int		ft_strcmp(char *str1, char *str2);
 void	my_pixel_put(t_data *data, int x, int y, int color);
-double	ft_atof(char *str);
+double	ft_atof(char *str, int *flag);
 int		ft_close(void *data);
 void	apply_zoom(int button, double a, double b, t_args *args);
 void	mouve(int button, t_args *args);
 void	invalid(void);
 void	invalid_julia(void);
-int		param(int ac, char **av, t_args *data);
+void	param(int ac, char **av, t_args *data);
+void	ft_putstr(char *str);
+void	merror(void);
 
 //set
 void	plan(double a, double b, t_args *args);
